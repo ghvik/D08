@@ -10,12 +10,16 @@
 
 # Body
 def store_to_dict():
-    pass
-
+    words_dict = {}
+    with open("words.txt", "r") as fin:
+        for word in fin:
+            words_dict[word.strip()] = "English"
+    return words_dict
 
 ###############################################################################
 def main():  # DO NOT CHANGE BELOW
     words_dict = store_to_dict()
+    print(words_dict)
     if "this" in words_dict:
         print("Yup.")
     if "qwertyuiop" in words_dict:

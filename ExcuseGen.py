@@ -4,28 +4,33 @@ import random
 
 
 # Body
-def printRoster(roster):
+def print_roster(roster):
     """ prints entire roster """
     for x in roster:
         print(x)
 
 
-def getRandomParticipantIndex(roster):
+def get_random_participant_index(roster):
     """ Returns random index of person in roster """
     return random.randint(0, len(roster) - 1)
 
 
-def getPerson():
+def get_person(index, roster):
     """ Returns person (string) from roster """
     # rewrite getPerson() to take a index and roster; return name at index
-    pass
+    
+    # number, person
+    for x,y in enumerate(roster):
+        # print("number: {}, name: {}".format(x,y))
+        if x == index:
+            return y
+    
 
-
-def addPerson():
+def add_person(roster, add_name):
     """ Adds person (string) to roster """
-    # rewrite addStudent() to take a name and roster; add name to roster
-    pass
-
+    # rewrite addPersion() to take a name and roster; add name to roster
+    roster.append(add_name)
+    print("You added {} to {}.".format(add_name, roster))
 
 def get_excuse():
     excuses = ["My dog ate my homework",
@@ -44,7 +49,7 @@ def get_excuse():
 def main():
     """ Main -- prints the bootcamp roster, adds Daniel, and then prints
     excuses """
-    bootcampParticipants = ["Malavika", "Edward", "Nancy", "Ankeet", "Anna",
+    bootcamp_participants = ["Malavika", "Edward", "Nancy", "Ankeet", "Anna",
                             "Arnav", "Sandeep", "Shannon", "Natalia", "Nia",
                             "Nicolas", "Nihar", "Suchismita", "Vikram", "Yifei",
                             "Avi", "Nisha", "Peter", "Priyanka", "Rohit",
@@ -53,14 +58,18 @@ def main():
                             "Jolly", "Michelle", "Morgan", "Mudit"]
 
     # your one line of code goes here to print roster #
-
+    print_roster(bootcamp_participants)
+    
     # add 'Daniel' to bootcampParticipants
-
+    add_person(bootcamp_participants, "Daniel")
+    
     # Your Code Here ###
     # get random participant
-
+    index = get_random_participant_index(bootcamp_participants)
+    print(get_person(index, bootcamp_participants))
     # print person's name who has excuse today.
-
+    name = get_person(index, bootcamp_participants)
+    #excuse = get_excuse()
     #
     # print person's name who has excuse today.
     # Fix code below to print name and excuse of person:
