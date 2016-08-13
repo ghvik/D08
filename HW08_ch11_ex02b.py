@@ -23,7 +23,9 @@ def print_hist_old(h):
 
 def print_hist_new(h):
     words = h.keys()
-    print(sorted(words))
+    words = sorted(words)
+    for w in words:
+        print(w, h[w])
 
 def histogram_new(s):
     d = dict()
