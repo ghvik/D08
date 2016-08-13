@@ -47,9 +47,12 @@ def get_pledge_list():
     the order it appears in the original file. returns the list.
     """
     pledge_list = []
+    # Remove the following punctuation marks
+    punctuation = ",."
     with open("pledge.txt", "r") as fin:
         for line in fin:
             for word in line.split():
+                word = "".join(letter for letter in word if letter not in punctuation)
                 pledge_list.append(word)
     return pledge_list
 
