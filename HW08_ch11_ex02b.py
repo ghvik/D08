@@ -22,8 +22,28 @@ def print_hist_old(h):
 
 
 def print_hist_new(h):
-    pass
+    words = h.keys()
+    print(sorted(words))
 
+def histogram_new(s):
+    d = dict()
+    for word in s:
+        d[word] = d.get(word, 0) + 1
+    return d
+
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in
+    the order it appears in the original file. returns the list.
+    """
+    pledge_list = []
+    # Remove the following punctuation marks
+    punctuation = ",."
+    with open("pledge.txt", "r") as fin:
+        for line in fin:
+            for word in line.split():
+                word = "".join(letter for letter in word if letter not in punctuation)
+                pledge_list.append(word)
+    return pledge_list
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
@@ -37,7 +57,8 @@ def main():
     """ Calls print_hist_new with the appropriate arguments to print the
     histogram of pledge.txt.
     """
-    pass
+    h = histogram_new(get_pledge_list())
+    print_hist_new(h)
 
 if __name__ == '__main__':
     main()
