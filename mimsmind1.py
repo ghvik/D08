@@ -35,7 +35,7 @@ def guess_a_number():
             if len(user_input) > num_digits:
                 print("Invalid input. You have entered too many digits.")
                 
-            # Pad the left hand side with enough 0's to make it 3 digits.
+            # Pad the left hand side with enough 0's to make it n digits.
             elif len(user_input) < num_digits:
                 user_input = to_0_padded_string(user_input, num_digits)
                 print(("The zero padded equivalent is {}. This is used to determine bulls and cows."
@@ -76,7 +76,7 @@ def to_0_padded_string(number, num_digits):
     number -- the number to pad with 0's
     num_digits -- the number of digits that the final padded number will have
     """
-    if int(number) < 10*num_digits:
+    if int(number) < (10**(num_digits - 1)):
         number = str(number)
         number = "0"*(num_digits - len(number)) + number
         return number
