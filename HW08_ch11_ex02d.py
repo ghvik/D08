@@ -28,20 +28,45 @@ def invert_dict_old(d):
 
 
 def invert_dict_new(d):
-    pass
-
+    inverse = dict()
+    for key, val in d.items():
+        inverse.setdefault(val, []).append(key)
+    return inverse
 
 def print_hist_newest(d):
-    pass
+    word_count = d.keys()
+    word_count = sorted(word_count)
+    for count in word_count:
+        print('{}: {}'.format(count, d[count]))
+
+###############################################################################
+# INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
+###############################################################################
+def histogram_new(s):
+    """Creates a word count histogram for a given list of words"""
+    d = dict()
+    for word in s:
+        d[word] = d.get(word, 0) + 1
+    return d
+
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in
+    the order it appears in the original file. returns the list.
+    """
+    pledge_list = []
+    # Remove the following punctuation marks
+    punctuation = ",."
+    with open("pledge.txt", "r") as fin:
+        for line in fin:
+            for word in line.split():
+                word = "".join(letter for letter in word if letter not in punctuation)
+                pledge_list.append(word)
+    return pledge_list
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
 
-
-###############################################################################
-# INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
-###############################################################################
 def main():  # DO NOT CHANGE BELOW
     pledge_histogram = histogram_new(get_pledge_list())
     pledge_invert = invert_dict_new(pledge_histogram)
