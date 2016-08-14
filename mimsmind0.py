@@ -9,7 +9,7 @@
 from random import randint
 import sys
 
-def start_prompt():
+def guess_a_number():
     """Asks the user to guess a random number"""
     
     # Checks to see if the program is run with extra arguments
@@ -20,13 +20,8 @@ def start_prompt():
         num_digits = 1
     secret_number = randint(10**(num_digits - 1), 10**num_digits - 1)
     guesses = 0
-    congrats = ("Congratulations! You guess the correct number in {} {}."
-        .format(guesses, "try" if guesses==1 else "tries"))
     while True:
-        user_input = input("Please guess a {}-digit number or type 'done' to quit: ".format(num_digits))
-        if user_input == "done":
-            break
-            
+        user_input = input("Please guess a {}-digit number: ".format(num_digits))
         # Validate user input
         try:
             user_input = int(user_input)
@@ -45,7 +40,7 @@ def start_prompt():
                 break
     
 def main():
-    start_prompt()
+    guess_a_number()
 
 if __name__ == "__main__":
     main()
